@@ -1,0 +1,35 @@
+
+
+POST http://localhost:3001/register
+Content-Type: application/json
+
+{
+  "name": "saye",
+  "email": "saye@saye",
+  "password": "saye"
+}
+
+###
+Get http://localhost:3001/user 
+
+###
+POST  http://localhost:3001/login
+Content-Type: application/json
+
+{
+  "email": "a@a",
+  "password": "sa"
+}
+
+###
+
+POST http://localhost:3001/todo/new
+
+Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU21vbiIsImVtYWlsIjoiYUBhIiwiaWF0IjoxNjk1NDc3NzAyfQ.U7HcFxttF0pUxkSDS_JAzhuLuZlDcLPI-qv90FBYwZg"
+Content-Type: application/json
+{
+  "user": "650ee4ef2acdff9afb529d54",
+  "title": "do",
+  "complete": false,
+  "dueDate": "2023-09-30T00:00:00Z"
+}

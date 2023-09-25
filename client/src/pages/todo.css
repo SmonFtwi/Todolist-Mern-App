@@ -1,0 +1,187 @@
+/* body{
+  margin: 0px;
+  padding:0px;
+  background-color: #082f49;
+  color:white;
+
+} */
+
+.App{
+  margin: 3vh 10vh;
+  
+
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between; /* This pushes the elements to the left and right */
+  align-items: center; /* Vertically center the content */
+  max-width: 50vw;
+  border: 1px black solid;
+  border-radius: 10px;
+  margin: 2vh;
+  padding: 1vh 2vh;
+  background-color: #051c2b;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.todo .text{
+  flex: 2;
+  
+
+}
+.todo .dueDate{
+  flex:1;
+}
+
+
+
+/* Add this CSS to your stylesheet */
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: 10vh;
+  height: 5vh;
+  background-color: #ccc;
+  border-radius: 15px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: black;
+  margin-right: 3vh;
+}
+
+.toggle-button .slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-button.completed {
+  background-color: #4caf50; /* Green background when completed */
+}
+
+.toggle-button.completed .slider {
+  transform: translateX(30px); /* Move slider to the right when completed */
+}
+
+.toggle-button.in-progress .slider {
+  transform: translateX(0); /* Move slider to the left when in progress */
+}
+
+.delete-todo{
+  margin-left: 2vh;
+  cursor: pointer;
+}
+.edit-todo{
+  cursor: pointer;
+}
+.btnContainer {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right within the container */
+  align-items: flex-end; /* Align the button to the bottom within the container */
+   /* Adjust the height as needed to fill the viewport height */
+  
+}
+
+
+.addBtn {
+  background-color: #051c2b;
+  width: 10vh;
+  height: 10vh;
+  padding: 1vh 1.5vh;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 5vh;
+  cursor: pointer;
+  color: white;
+  border: 1px black solid;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  position:fixed;
+  top:80%;
+  
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 60vh;
+    border-radius: 16px;
+    padding: 2vh;
+    color: black;
+  }
+  
+  .closePopup {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: 0px solid;
+    border-radius: 60px;
+    padding: 1vh 2vh;
+  }
+  .closePopup:hover{
+    cursor: pointer;
+  }
+  
+  .content{
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+    padding: 1vh 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 16px;
+    
+  }
+.content h2{
+  margin: 2vh 3vh;
+}
+
+.content input{
+  padding: 2vh;
+  border-radius: 10px;
+  width: 80%;
+  margin: 1vh;
+
+}
+
+.content button{
+  margin: 2vh 3vh;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+ 
+  padding: 1.5vh 2vh;
+  border-radius: 10px;
+  background-color: #082f49;
+  cursor: pointer;
+  border: 1px black solid;
+  color:white
+  
+}
+.content button:hover{
+  cursor: pointer;
+  
+}
+
+  /* Reset default styles for form elements within the .popup */
+  .popup form {
+    display: initial; /* Reset display property */
+    flex-direction: initial; /* Reset flex-direction */
+    justify-content: initial; /* Reset justify-content */
+    align-items: initial; /* Reset align-items */
+    border-radius: initial; /* Reset border-radius */
+    box-shadow: initial; /* Reset box-shadow */
+    position: initial; /* Reset position */
+    top: initial; /* Reset top */
+    left: initial; /* Reset left */
+    padding: initial; /* Reset padding */
+  }

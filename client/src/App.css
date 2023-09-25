@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f5f9;
+  
+}
+
+
+
+.homeContent{
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+img{
+  max-width: 60vw;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.homeContent h2 {
+  color:#0f172a;
+}

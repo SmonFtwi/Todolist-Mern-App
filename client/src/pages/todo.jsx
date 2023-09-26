@@ -4,17 +4,17 @@ import { TodoContextProvider } from "../context"; */
 import './todo.css'
 import { useState, useEffect } from 'react'
 const api_base = 'http://localhost:3001';
-import {X, PencilSimpleLine ,Trash} from 'phosphor-react'
-import { useNavigate } from 'react-router-dom';
-//import './reset.css'
+import {X, PencilSimpleLine ,Trash, List} from 'phosphor-react'
+import { useNavigate } from 'react-router-dom'
 //import { decode } from 'react-jwt';
-
+import Navbar from '../component/navBar/navBar';
 
 
 function Todo() {
   const [todos, setTodos] = useState([]);
 	const [popupActive, setPopupActive] = useState(false);
   const [updatePopupActive, setUpdatePopupActive] = useState(false);
+  const [listClicked, setListClicked] = useState(false);
 	const [newTodo, setNewTodo] = useState({
     title:"",
     dueDate:"",
@@ -42,12 +42,50 @@ function Todo() {
     })
     .then((res) => res.json())
     .then((data) => {
-        console.log('Data received from server:', data); // Log the data received from the server
+         
         setTodos(data);
       })
     .catch((err) => console.error('Error: ', err));
     };
-  
+    const GetCompeleted = () => {
+      // Use the 'headers' object when making requests to the server
+      fetch(api_base + `/todo/completed`, {
+          method: 'GET',
+          headers,
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('api not working ')
+          setTodos(data);
+          
+        })
+      .catch((err) => console.error('Error: ', err));
+};
+   
+const GetTodayTask = () => {
+      
+      fetch(api_base + `/todo/today`, {
+      method: 'GET',
+      headers,
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      setTodos(data);
+    })
+  .catch((err) => console.error('Error: ', err));
+    }
+    const GetThisWeekTask = () => {
+      
+      fetch(api_base + `/todo/thisWeek`, {
+      method: 'GET',
+      headers,
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      setTodos(data);
+    })
+  .catch((err) => console.error('Error: ', err));
+    }
 
 
 	const addTodo = async () => {
@@ -130,10 +168,12 @@ function Todo() {
   };
 
   const navigate = useNavigate();
+ 
   return (
     <>
 		
             <div className="header"> 
+            <div className='List'onClick={() => setListClicked(!listClicked)}><List size={32} /></div>
            <h1> Todo List</h1>
            <div className="nav">
            <button onClick={() => {navigate('/login')}}>Log-out</button>
@@ -141,7 +181,16 @@ function Todo() {
             </div>
             </div>
             
-    <div className="App">
+    <div className="App" style={{ gridTemplateColumns: listClicked ? '1fr' : '1fr 4fr'  }  }>
+    {listClicked ? null : (
+    <Navbar
+      getTodayTask={GetTodayTask}
+      getCompleted={GetCompeleted}
+      getTodo={GetTodos}
+      getThisWeekTodo={GetThisWeekTask}
+    />
+  )}
+      <div className="todoContent" style={{ marginLeft: listClicked ? '5vw' : '2vw'  } }>
 			<h1>Welcome</h1>
 			<h4>Your tasks</h4>
 
@@ -186,7 +235,7 @@ function Todo() {
                 </div>
               </div>
             ) : '' }
-
+    
 
             <div className="delete-todo"  onClick={() => deleteTodo(todo._id)}><Trash size={32} /></div>
 
@@ -195,7 +244,7 @@ function Todo() {
 					<p>You currently have no tasks</p>
 				)}
 			</div>
-
+ 
       <div className="btnContainer">
   <button className="addBtn" onClick={() => setPopupActive(true)}>+</button>
   </div>
@@ -209,7 +258,9 @@ function Todo() {
               className="add-todo-input" 
               onChange={(e) => setNewTodo({ ...newTodo, title: e.target.value })}
               value={newTodo.title} 
-              required/>
+              required
+              maxLength={35}
+              />
             <input 
              type="date" 
               className="add-todo-input" 
@@ -223,6 +274,7 @@ function Todo() {
 			) : ''}
 
 
+    </div>
     </div>
     </>
 	);

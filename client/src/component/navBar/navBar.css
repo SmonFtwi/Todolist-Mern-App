@@ -1,0 +1,30 @@
+
+.navBar{
+    background-color:#fbfdfe;
+   
+    height: 100vh;
+   
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
+   
+    
+   
+}
+.navBar h2{
+    padding-left: 2vw;
+    margin: 1.5vh;
+    padding: 1vh;
+    
+}
+.navBar h2:hover{
+    background-color:#e4e6e8;
+    cursor: pointer;
+    
+}
+
+.navBar h2:active{
+    background-color: #475569;
+    color: white;
+}
+

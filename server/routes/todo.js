@@ -17,8 +17,61 @@ router.get('/todo', authMiddleware, async (req, res, next) => {
       res.status(500).json({ error: 'An error occurred while fetching todos' });
     }
   });
-  
 
+  // completed task only
+  router.get('/todo/completed', authMiddleware, async (req, res, next) => {
+    try {
+      const userId = req.user.id; // Get the user ID from the token
+        const todos = await Todo.find({
+          user: userId,
+          $and: [{complete: 'true'} ],
+        });
+    res.json(todos);
+    } catch (error) {
+      console.error('Error fetching todos:', error); // Log any errors
+      res.status(500).json({ error: 'An error occurred while fetching todos' });
+    }
+  });
+  
+  // today tasks 
+  router.get('/todo/today', authMiddleware, async (req, res, next) => {
+    try {
+      const userId = req.user.id; // Get the user ID from the token
+     
+      
+    const today = new Date().toISOString().split('T')[0];
+    const todos = await Todo.find({
+      user: userId,
+      $and: [{ dueDate: today }],
+    });
+    res.json(todos);
+    } catch (error) {
+      console.error('Error fetching todos:', error); // Log any errors
+      res.status(500).json({ error: 'An error occurred while fetching todos' });
+    }
+  });
+ // this week tasks 
+ router.get('/todo/thisWeek', authMiddleware, async (req, res, next) => {
+  try {
+    const userId = req.user.id; // Get the user ID from the token
+      const today = new Date().toISOString().split('T')[0];
+      const nextWeek = new Date();
+      nextWeek.setDate(nextWeek.getDate() + 7);
+      const todos = await Todo.find({
+        user: userId,
+        $and: [
+          { dueDate: { $gte: today } }, // Todos with due dates greater than or equal to today
+          { dueDate: { $lte: nextWeek } }, // Todos with due dates less than or equal to nextWeek
+        ],
+      });
+      
+       res.json(todos);
+
+  } catch (error) {
+    console.error('Error fetching todos:', error); // Log any errors
+    res.status(500).json({ error: 'An error occurred while fetching todos' });
+  }
+});
 
 // Post 
 router.post('/todo/new',authMiddleware ,async (req, res, next) => {

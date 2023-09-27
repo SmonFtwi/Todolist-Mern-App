@@ -33,7 +33,7 @@ function Login(){
   
   async function registerUser() {
     try {
-      const res = await fetch('https://todolist-mern-app.vercel.app//login', {
+      const res = await fetch('https://todolist-mern-app.vercel.app/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

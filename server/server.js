@@ -14,7 +14,7 @@ app.use(express.json());
  
 app.use(cors());
 //data base
-const mongoDB = 'mongodb://localhost:27017/TodoListApp';
+const mongoDB = process.env.mongoDB;
 
 mongoose.connect(mongoDB, {
         useNewUrlParser: true,

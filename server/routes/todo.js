@@ -104,9 +104,7 @@ router.post('/todo/new',authMiddleware ,async (req, res, next) => {
     if (todos){
     const result = await Todo.findByIdAndDelete(req.params.id);
     res.json(result)
-    }
-
-   
+    } 
 });
 
 router.put('/todo/complete/:id', authMiddleware, async (req, res) => {

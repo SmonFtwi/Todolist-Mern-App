@@ -8,9 +8,18 @@
     ],
     "routes": [
       {
+        "src": "/api/auth/(.*)", 
+        "dest": "/api/auth/$1" 
+      },
+      {
+        "src": "/api/todo/(.*)", 
+        "dest": "/api/todo/$1" 
+      },
+      {
         "src": "/(.*)",
         "dest": "/"
       }
     ]
   }
+  
   

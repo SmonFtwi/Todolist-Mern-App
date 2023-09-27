@@ -32,7 +32,9 @@ mongoose.connect(mongoDB, {
 app.use('/' , authRoute)
 app.use('/' , toDoRoute)
 
-
+app.get('/', (req, res) => {
+  res.send('hello')
+})
 
 const port = process.env.PORT || 3001;
 app.listen(port , () => {

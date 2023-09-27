@@ -12,7 +12,13 @@ const app = express();
 
 app.use(express.json());
  
-app.use(cors());
+app.use(cors(
+    {
+        origin: ['https://todolist-mern-app-7sbe.vercel.app/'],
+        methods: ['POST','GET', 'PUT', 'DELETE'],
+        credentials: true
+    }
+));
 //data base
 const mongoDB = process.env.mongoDB;
 

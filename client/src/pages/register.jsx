@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 import Header from '../component/header';
-const apiBase = import.meta.env.VITE_REACT_APP_BASE
+const apiBase = import.meta.env.VITE_REACT_APP_API_BASE;
 
 function Register(){
   const [inputValue , setInputValue] = useState({

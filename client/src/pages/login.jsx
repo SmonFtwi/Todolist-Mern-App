@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-
 import { useState} from 'react'
 
 import './style.css';
 import Header from '../component/header';
 import { useNavigate } from 'react-router-dom';
-const apiBase = import.meta.env.VITE_REACT_APP_BASE
+const apiBase = import.meta.env.VITE_REACT_APP_BASE;
 
 function Login(){
   const [inputValue , setInputValue] = useState({

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 import Header from '../component/header';
+const apiBase = import.meta.env.VITE_REACT_APP_BASE
 
 function Register(){
   const [inputValue , setInputValue] = useState({
@@ -28,7 +29,7 @@ function Register(){
   
 
   async function  registerUser() {
-    const res= await fetch('https://todolist-mern-app.vercel.app/register', {
+    const res= await fetch(`${apiBase}/register`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

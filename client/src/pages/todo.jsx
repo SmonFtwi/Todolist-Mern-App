@@ -3,7 +3,7 @@
 import { TodoContextProvider } from "../context"; */
 import './todo.css'
 import { useState, useEffect } from 'react'
-const api_base = 'https://todolist-mern-app.vercel.app';
+const api_base = import.meta.env.VITE_REACT_APP_BASE
 import {X, PencilSimpleLine ,Trash, List} from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
 //import { decode } from 'react-jwt';

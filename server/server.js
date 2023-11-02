@@ -14,7 +14,7 @@ app.use(express.json());
  
 app.use(cors(
     {
-        origin: ['https://todolist-mern-app-7sbe.vercel.app'],
+        origin: ['https://todolist-mern-jhhe2bi1q-smonftwi.vercel.app'],
         methods: ['POST','GET', 'PUT', 'DELETE'],
         credentials: true
     }
